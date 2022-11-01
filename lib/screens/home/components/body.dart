@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:projeto_corretora/constants.dart';
@@ -14,7 +17,41 @@ class Body extends StatelessWidget {
       child: Column(
         children: <Widget>[
           HeaderWithSearchBox(size: size),
-          TitleWithCustomeUnderline(text: "Em destaque")
+          TitleWithMoreBtn(),
+        ],
+      ),
+    );
+  }
+}
+
+class TitleWithMoreBtn extends StatelessWidget {
+  const TitleWithMoreBtn({
+    Key? key,
+    required this.title,
+    required this.press,
+  }) : super(key: key);
+  final String title;
+  final Function press;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+      child: Row(
+        children: <Widget>[
+          TitleWithCustomeUnderline(text: "Destaques"),
+          Spacer(),
+          FlatButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            color: kPrimaryColor,
+            onPressed: () {},
+            child: Text(
+              "Proximo",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
         ],
       ),
     );
